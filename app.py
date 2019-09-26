@@ -68,12 +68,12 @@ def gen_picture():
   headers = {
     'X-Access-Token': os.getenv('AS_TOKEN'),
     'Content-Type': 'image/jpeg',
-}
+  }
 
-data = open('pic.jpg', 'rb').read()
-response = requests.post(url, headers=headers, data=data)
+  data = open('pic.jpg', 'rb').read()
+  response = requests.post(url, headers=headers, data=data)
 
-return response.payload.url
+  return response.payload.url
   
 def log(msg):
   print(str(msg))
