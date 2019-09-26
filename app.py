@@ -24,13 +24,23 @@ def webhook():
 def send_message(msg):
   url  = 'https://api.groupme.com/v3/bots/post'
 
+  data ={
+  'bot_id' : os.getenv('GROUPME_BOT_ID'),
+          'text'   : msg,
+  "attachments" : [
+    {
+      "type"  : "image",
+      "url"   : "https://i.groupme.com/somethingsomething.large"
+    }
+  ]
+}
   data = {
           'bot_id' : os.getenv('GROUPME_BOT_ID'),
           'text'   : msg,
           "attachments" : [
             {
               "type"  : "image",
-              "url"   : "https://i.groupme.com/3024x4032.jpeg.d955cd324c2a473aa521d76be462e908.large"
+              "url"   : "https://i.groupme.com/3024x4032.jpeg.d955cd324c2a473aa521d76be462e908"
             }
   ]
          }
