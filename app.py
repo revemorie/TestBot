@@ -14,11 +14,17 @@ array=["https://i.groupme.com/4032x3024.jpeg.684ffe5536a44b69bfc88c4567e10515","
 
 @app.route('/', methods=['POST'])
 def webhook():
-  '''
+  
   data = request.get_json()
   log('Recieved {}'.format(data))
   # We don't want to reply to ourselves!
-  
+
+  if 'gen_pic' in data:
+    msg="test"
+    url=gen_picture(data['gen_pic'])
+    gened_pic=[url]
+    send_message_picture(msg,gened_pic)
+    
   if data['text'].lower() == "!cheeto":
     msg = random.choice(msg_choices)
     send_message_picture(msg,array)
@@ -35,7 +41,7 @@ def webhook():
     send_message_picture(msg,gened_pic)
     
   return "ok", 200
-'''
+
 def send_message_picture(msg, arr):
   url  = 'https://api.groupme.com/v3/bots/post'
 
@@ -64,14 +70,12 @@ def send_msg(msg):
   json = urlopen(request).read().decode()
 
 
-def gen_picture():
+def gen_picture(data):
   url  = 'https://image.groupme.com/pictures'
   headers = {
     'X-Access-Token': os.getenv('AS_TOKEN'),
     'Content-Type': 'image/jpeg',
   }
-
-  data = open('pic.jpg', 'rb').read()
   
   request = Request(url, data=data,headers=headers)
   js = urlopen(request).read().decode()
