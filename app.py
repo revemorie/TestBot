@@ -30,7 +30,8 @@ def webhook():
   elif data['text'].lower() == '!test':
     msg="test"
     url=gen_picture()
-    send_message_picture(msg,a={url})
+    gened_pic=[url]
+    send_message_picture(msg,gened_pic)
     
   return "ok", 200
 
