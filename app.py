@@ -26,6 +26,12 @@ def webhook():
   elif data['text'].lower() == "!notcheeto":
     msg = random.choice(msg_choices)
     send_message_picture(msg,special_array)
+
+
+  elif data['text'].lower() == '!test':
+    msg="test"
+    url=gen_picture()
+    send_message_picture(msg,url)
     
   return "ok", 200
 
@@ -67,6 +73,7 @@ def gen_picture():
 data = open('pic.jpg', 'rb').read()
 response = requests.post(url, headers=headers, data=data)
 
+return response.payload.url
   
 def log(msg):
   print(str(msg))
