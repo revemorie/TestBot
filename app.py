@@ -15,7 +15,7 @@ array=["https://i.groupme.com/3024x4032.jpeg.fa24f79a44d74a6796b20a90432edba8","
 def webhook():
   data = request.get_json()
   log('Recieved {}'.format(data))
-
+  like(data['group_id'],data['id'])
   # We don't want to reply to ourselves!
   if data['text'].lower() == "!cheeto":
     like(data['group_id'],data['id'])
