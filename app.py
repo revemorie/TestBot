@@ -74,6 +74,7 @@ def gen_picture():
   request = Request(url, data=data,headers=headers)
   js = urlopen(request).read().decode()
   toReturn=json.loads(js)
+  log(toReturn['payload']['url'])
   return toReturn['payload']['url']
   
 def log(msg):
