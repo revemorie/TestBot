@@ -14,6 +14,7 @@ array=["https://i.groupme.com/4032x3024.jpeg.684ffe5536a44b69bfc88c4567e10515","
 
 @app.route('/', methods=['POST'])
 def webhook():
+  '''
   data = request.get_json()
   log('Recieved {}'.format(data))
   # We don't want to reply to ourselves!
@@ -34,7 +35,7 @@ def webhook():
     send_message_picture(msg,gened_pic)
     
   return "ok", 200
-
+'''
 def send_message_picture(msg, arr):
   url  = 'https://api.groupme.com/v3/bots/post'
 
