@@ -2,7 +2,6 @@ import os
 import sys
 import json
 import random
-import requests
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
@@ -71,11 +70,12 @@ def gen_picture():
   }
 
   data = open('pic.jpg', 'rb').read()
-  response = requests.post(url, headers=headers, data=data)
+  
+  request = Request(url, urlencode(data).encode(),headers=headers)
+  json = urlopen(request).read().decode()
 
   return response.payload.url
   
 def log(msg):
   print(str(msg))
   sys.stdout.flush()
-  
