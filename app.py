@@ -78,3 +78,4 @@ def gen_picture():
 def log(msg):
   print(str(msg))
   sys.stdout.flush()
+  
