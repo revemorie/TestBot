@@ -71,7 +71,7 @@ def gen_picture():
 
   data = open('pic.jpg', 'rb').read()
   
-  request = Request(url, urlencode(data).encode(),headers=headers)
+  request = Request(url, data=data,headers=headers)
   json = urlopen(request).read().decode()
 
   return response.payload.url
