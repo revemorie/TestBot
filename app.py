@@ -74,7 +74,7 @@ def gen_picture():
   request = Request(url, data=data,headers=headers)
   json = urlopen(request).read().decode()
 
-  return response.payload.url
+  return json.payload.url
   
 def log(msg):
   print(str(msg))
