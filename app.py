@@ -18,10 +18,12 @@ def webhook():
 
   # We don't want to reply to ourselves!
   if data['text'].lower() == "!cheeto":
+    like(data['group_id'],data['id'])
     msg = random.choice(msg_choices)
     send_message_picture(msg,array)
     
   elif data['text'].lower() == "!notcheeto":
+    like(data['group_id'],data['id'])
     msg = random.choice(msg_choices)
     send_message_picture(msg,special_array)
 
@@ -54,6 +56,12 @@ def send_msg(msg):
   request = Request(url, urlencode(data).encode())
   json = urlopen(request).read().decode()
 
+def like(conversationId,msgId):
+  
+  url  = 'https://api.groupme.com/v3/messages/'+conversationId+'/'+msgId+'/like'
+  request = Request(url)
+  json = urlopen(request).read().decode()
+  
 def log(msg):
   print(str(msg))
   sys.stdout.flush()
