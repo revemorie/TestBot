@@ -11,7 +11,7 @@ app = Flask(__name__)
 msg_choices=["Meow","Purr","Growl"]
 special_array=["https://i.groupme.com/1920x1080.jpeg.bad8a2da943847b08ea013b674e520d4"]
 array=["https://i.groupme.com/3024x4032.jpeg.fa24f79a44d74a6796b20a90432edba8","https://i.groupme.com/1688x2250.jpeg.cb2bf654cd614b19853bc01edb4e96b1","https://i.groupme.com/3024x4032.jpeg.d955cd324c2a473aa521d76be462e908","https://i.groupme.com/1124x1500.jpeg.338c4165e1da4698b5afddd28f8a90fb","https://i.groupme.com/563x1218.jpeg.7b7484ff24d64312ad8325f94650e544","https://i.groupme.com/1686x2250.jpeg.fcb140e1486d4bb88296cc0fe6ffc7e3"]
-lastUser='123456'
+global lastUser='123456'
 @app.route('/', methods=['POST'])
 def webhook():
   data = request.get_json()
