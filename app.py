@@ -30,20 +30,11 @@ def send_message(msg):
   "attachments" : [
     {
       "type"  : "image",
-      "url"   : "https://i.groupme.com/somethingsomething.large"
+      "url"   : "https://i.groupme.com/3024x4032.jpeg.d955cd324c2a473aa521d76be462e908"
     }
-  ]
+  ],
+  'picture_url': "https://i.groupme.com/3024x4032.jpeg.d955cd324c2a473aa521d76be462e908"
 }
-  data = {
-          'bot_id' : os.getenv('GROUPME_BOT_ID'),
-          'text'   : msg,
-          "attachments" : [
-            {
-              "type"  : "image",
-              "url"   : "https://i.groupme.com/3024x4032.jpeg.d955cd324c2a473aa521d76be462e908"
-            }
-  ]
-         }
   request = Request(url, urlencode(data).encode())
   json = urlopen(request).read().decode()
   
