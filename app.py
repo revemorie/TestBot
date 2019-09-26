@@ -16,7 +16,7 @@ def webhook():
   data = request.get_json()
   log('Recieved {}'.format(data))
   # We don't want to reply to ourselves!
-  elif data['text'].lower() == "!cheeto":
+  if data['text'].lower() == "!cheeto":
     msg = random.choice(msg_choices)
     send_message_picture(msg,array)
     
