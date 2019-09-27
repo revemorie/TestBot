@@ -2,7 +2,7 @@ import os
 import sys
 import json
 import random
-from urllib.parse import urlencode
+from urllib.parse import urlencode, unquote
 from urllib.request import Request, urlopen
 
 from flask import Flask, request
@@ -41,7 +41,7 @@ def picWebhook():
   data = request.get_data()
   log('Recieved {}'.format(data))
   msg="test"
-  print(str(data,'utf-8'))
+  print(unquote(str(data,'utf-8')[8:]))
   url=json.loads(data.decode())
   print(url)
   gened_pic=[url]
