@@ -38,11 +38,10 @@ def webhook():
 
 @app.route('/picture', methods=['POST'])
 def picWebhook():
-  print('yay')
   data = request.get_data()
   log('Recieved {}'.format(data))
   msg="test"
-  print(data.decode())
+  print(str(data,'utf-8'))
   url=json.loads(data.decode())
   print(url)
   gened_pic=[url]
