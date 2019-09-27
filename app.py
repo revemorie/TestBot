@@ -30,7 +30,7 @@ def webhook():
 
 
   elif data['text'].lower() == '!test':
-    r=requests.get("http://dc969d9b.ngrok.io")
+    r=requests.get("http://16fb9c95.ngrok.io")
     
   return "ok", 200
 
