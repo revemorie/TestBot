@@ -42,8 +42,24 @@ def webhook():
     
   return "ok", 200
 
+
+@app.route('/picture', methods=['POST'])
+def webhook():
+  
+  data = request.get_json()
+  log('Recieved {}'.format(data))
+  # We don't want to reply to ourselves!
+  log(data)
+  if 'gen_pic' in data:
+    msg="test"
+    url=gen_picture(data['gen_pic'])
+    gened_pic=[url]
+    send_message_picture(msg,gened_pic)
+
+
+  return "ok", 200
 def send_message_picture(msg, arr):
-  url  = 'https://api.groupme.com/v3/bots/post'
+  url  = 'https://api.groupme.com/v3/bots/post '
 
   rand=random.choice(arr)
   data ={
