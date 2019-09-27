@@ -18,7 +18,7 @@ def webhook():
   data = request.get_json()
   log('Recieved {}'.format(data))
   # We don't want to reply to ourselves!
-
+  log(data)
   if 'gen_pic' in data:
     msg="test"
     url=gen_picture(data['gen_pic'])
