@@ -29,6 +29,7 @@ def webhook():
 
 
   elif data['text'].lower() == '!test':
+    msg=1
     #call pi script
     #pi script will send back picture url to be posted
     
@@ -48,6 +49,7 @@ def picWebhook():
     send_message_picture(msg,gened_pic)
 
   return "ok", 200
+
 def send_message_picture(msg, arr):
   url  = 'https://api.groupme.com/v3/bots/post '
 
