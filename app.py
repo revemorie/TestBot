@@ -15,7 +15,7 @@ array=["https://i.groupme.com/4032x3024.jpeg.684ffe5536a44b69bfc88c4567e10515","
 @app.route('/', methods=['POST'])
 def webhook():
   
-  data = flask.request.get_json()
+  data = request.get_json()
   log('Recieved {}'.format(data))
   # We don't want to reply to ourselves!
     
@@ -39,7 +39,7 @@ def webhook():
 @app.route('/picture', methods=['POST'])
 def picWebhook():
   
-  data = flask.request.get_json()
+  data = request.get_json(force=True)
   log('Recieved {}'.format(data))
   
   if 'gen_pic' in data:
