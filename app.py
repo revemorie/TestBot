@@ -18,12 +18,6 @@ def webhook():
   data = request.get_json()
   log('Recieved {}'.format(data))
   # We don't want to reply to ourselves!
-  log(data)
-  if 'gen_pic' in data:
-    msg="test"
-    url=data['gen_pic']
-    gened_pic=[url]
-    send_message_picture(msg,gened_pic)
     
   if data['text'].lower() == "!cheeto":
     msg = random.choice(msg_choices)
@@ -35,10 +29,8 @@ def webhook():
 
 
   elif data['text'].lower() == '!test':
-    msg="test"
-    url=gen_picture()
-    gened_pic=[url]
-    send_message_picture(msg,gened_pic)
+    #call pi script
+    #pi script will send back picture url to be posted
     
   return "ok", 200
 
@@ -48,14 +40,12 @@ def picWebhook():
   
   data = request.get_json()
   log('Recieved {}'.format(data))
-  # We don't want to reply to ourselves!
-  log(data)
+  
   if 'gen_pic' in data:
     msg="test"
-    url=gen_picture(data['gen_pic'])
+    url=data['gen_pic']
     gened_pic=[url]
     send_message_picture(msg,gened_pic)
-
 
   return "ok", 200
 def send_message_picture(msg, arr):
