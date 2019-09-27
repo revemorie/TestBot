@@ -41,12 +41,10 @@ def picWebhook():
   print('yay')
   data = request.get_data()
   log('Recieved {}'.format(data))
-  
-  if 'gen_pic' in data:
-    msg="test"
-    url=data['gen_pic']
-    gened_pic=[url]
-    send_message_picture(msg,gened_pic)
+  msg="test"
+  url=data
+  gened_pic=[url]
+  send_message_picture(msg,gened_pic)
 
   return "ok", 200
 
