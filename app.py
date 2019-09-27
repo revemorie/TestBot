@@ -39,7 +39,7 @@ def webhook():
 @app.route('/picture', methods=['POST'])
 def picWebhook():
   
-  data = request.get_json()
+  data = request.get_json(force=True)
   log('Recieved {}'.format(data))
   
   if 'gen_pic' in data:
