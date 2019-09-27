@@ -38,7 +38,7 @@ def webhook():
 
 @app.route('/picture', methods=['POST'])
 def picWebhook():
-  
+  print('yay')
   data = request.get_json(force=True)
   log('Recieved {}'.format(data))
   
