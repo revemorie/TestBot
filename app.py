@@ -42,6 +42,7 @@ def picWebhook():
   data = request.get_data()
   log('Recieved {}'.format(data))
   msg="test"
+  print(data.decode())
   url=json.loads(data.decode())
   print(url)
   gened_pic=[url]
