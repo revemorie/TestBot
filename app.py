@@ -2,6 +2,7 @@ import os
 import sys
 import json
 import random
+import requests
 from urllib.parse import urlencode, unquote
 from urllib.request import Request, urlopen
 
@@ -29,9 +30,7 @@ def webhook():
 
 
   elif data['text'].lower() == '!test':
-    msg=1
-    #call pi script
-    #pi script will send back picture url to be posted
+    r=requests.get("http://dc969d9b.ngrok.io")
     
   return "ok", 200
 
