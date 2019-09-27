@@ -21,7 +21,7 @@ def webhook():
   log(data)
   if 'gen_pic' in data:
     msg="test"
-    url=gen_picture(data['gen_pic'])
+    url=data['gen_pic']
     gened_pic=[url]
     send_message_picture(msg,gened_pic)
     
