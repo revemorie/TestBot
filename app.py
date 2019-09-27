@@ -41,11 +41,8 @@ def picWebhook():
   data = request.get_data()
   log('Recieved {}'.format(data))
   msg="test"
-  print(unquote(str(data,'utf-8')[8:]))
-  url=json.loads(data.decode())
-  print(url)
-  gened_pic=[url]
- # send_message_picture(msg,gened_pic)
+  gened_pic=[unquote(str(data,'utf-8')[8:]))]
+  send_message_picture(msg,gened_pic)
 
   return "ok", 200
 
