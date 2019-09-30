@@ -34,7 +34,7 @@ def webhook():
     log('returned')
     
   elif data['text'].lower() == '!bigbootybitches':
-    msg =
+    msg ="BIG BOOTY BITCHES"
     send_message_picture(msg,bbbArray)
 
    
