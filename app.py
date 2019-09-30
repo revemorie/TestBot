@@ -77,13 +77,7 @@ def send_message_video(msg, arr):
   data ={
   'bot_id' : os.getenv('GROUPME_BOT_ID'),
           'text'   : msg,
-  "attachments" : [
-    {
-      "type"  : "video",
-      "url"   : rand
-    }
-  ],
-  'picture_url': rand
+  'attachments': [{'preview_url': 'https://v.groupme.com/21164167/2019-09-30T19:14:46Z/25a4d2c.348x240r.jpg', 'type': 'video', 'url': rand}]
 }
   request = Request(url, urlencode(data).encode())
   json = urlopen(request).read().decode()
