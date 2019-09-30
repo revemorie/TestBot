@@ -31,6 +31,7 @@ def webhook():
 
   elif data['text'].lower() == '!live':
     r=requests.get("http://16fb9c95.ngrok.io")
+    log('returned')
     
   return "ok", 200
 
