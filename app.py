@@ -69,6 +69,24 @@ def send_message_picture(msg, arr):
 }
   request = Request(url, urlencode(data).encode())
   json = urlopen(request).read().decode()
+  
+def send_message_video(msg, arr):
+  url  = 'https://api.groupme.com/v3/bots/post'
+
+  rand=random.choice(arr)
+  data ={
+  'bot_id' : os.getenv('GROUPME_BOT_ID'),
+          'text'   : msg,
+  "attachments" : [
+    {
+      "type"  : "video",
+      "url"   : rand
+    }
+  ],
+  'picture_url': rand
+}
+  request = Request(url, urlencode(data).encode())
+  json = urlopen(request).read().decode()
 
 def send_msg(msg):
   url  = 'https://api.groupme.com/v3/bots/post'
