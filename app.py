@@ -34,8 +34,9 @@ def webhook():
     log('returned')
     
   elif data['text'].lower() == '!bigbootybitches':
-    msg ="BIG BOOTY BITCHES"
-    send_message_video(msg,bbbArray)
+    msg ="https://v.groupme.com/20753497/2019-09-30T18:17:02Z/39b4c006.348x240r.mp4"
+
+    send_msg(msg)
 
    
   return "ok", 200
