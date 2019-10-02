@@ -44,8 +44,9 @@ def webhook():
     num=int((data['text'][4:]))
     num_add+=num
     send_msg("Recieved number "+str(num)+", and added it to total to get "+str(num_add))
-      
-    
+
+  elif data['sender_id']=='34622887' and "cheeto" in data['text'].lower():
+    send_msg("Hey Fatih")
    
   return "ok", 200
 
