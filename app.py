@@ -67,7 +67,7 @@ def picWebhook():
 
 @app.route('/qb', methods=['POST'])
 def qbWebhook():
-  data = request.get_data()
+  data = request.get_json()
   log('Recieved {}'.format(data))
  
   if data['text'].lower() == '!goodwentz':
