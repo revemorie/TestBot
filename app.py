@@ -39,21 +39,12 @@ def webhook():
 
     send_msg(msg)
 
-
   elif "i'm" in data['text'].lower() and data['sender_type']!='bot':
 
     amNum=data['text'].lower().find("i'm")
     am=data['text'][amNum+4:]
     msg="Hi "+am+", I'm CheetoBot"
     send_msg(msg)
-'''
-  elif '!add' in data['text'].lower() and (data['text'][4:]).isnumeric():
-
-    num=int((data['text'][4:]))
-    num_add+=num
-    send_msg("Recieved number "+str(num)+", and added it to total to get "+str(num_add))
-'''
-
    
   return "ok", 200
 
