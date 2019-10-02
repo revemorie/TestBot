@@ -39,7 +39,7 @@ def webhook():
 
     send_msg(msg)
 
-  elif '!num' in data['text'].lower() and (data['text'][4:]).isnumeric():
+  elif '!add' in data['text'].lower() and (data['text'][4:]).isnumeric():
 
     num=int((data['text'][4:]))
     num_add+=num
