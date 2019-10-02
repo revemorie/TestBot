@@ -70,11 +70,11 @@ def qbWebhook():
   data = request.get_data()
   log('Recieved {}'.format(data))
  
-  if data['text'].lower() == "!goodwentz":
+  if data['text'].lower() == '!goodwentz':
     msg = '"'+random.choice(gwarr)+'"-Carson Wentz'
     send_msg(msg)
     
-  if data['text'].lower() == "!badwentz":
+  if data['text'].lower() == '!badwentz':
     msg =""
     send_message_picture(msg,bwarr)
   
