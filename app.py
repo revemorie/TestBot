@@ -42,6 +42,9 @@ def webhook():
   elif ("i’m" in data['text'].lower() or "i'm" in data['text'].lower() )and data['sender_type']!='bot':
 
     amNum=data['text'].lower().find("i'm")
+    if amNum==-1:
+      amNum=data['text'].lower().find("i’m")
+      
     am=data['text'][amNum+4:]
     msg="Hi "+am+", I'm CheetoBot"
     send_msg(msg)
