@@ -40,6 +40,14 @@ def webhook():
     msg ="https://v.groupme.com/20753497/2019-09-30T18:17:02Z/39b4c006.348x240r.mp4"
 
     send_msg(msg)
+
+  elif data['text'].lower() == '!help':
+    
+    msg ="!help- Shows this text\n!cheeto- Displays a random photo of cheeto\n!notcheeto- Displays a random photo of something that is not cheeto\n!live- Generates a live gif of whatever the PiCamera is pointing towards (hopefully cheeto)\n!bigbootybitches- I GOT BIG BOOTY BITCHES"
+
+    send_msg(msg)
+
+    
   '''
   elif ("i’m" in data['text'].lower() or "i'm" in data['text'].lower() )and data['sender_type']!='bot':
 
