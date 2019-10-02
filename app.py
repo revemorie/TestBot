@@ -87,7 +87,7 @@ def send_message_picture_wentz(msg, arr):
   rand=random.choice(arr)
   data ={
   'bot_id' : os.getenv('WENTZ_ID'),
-          'text'   : msg,
+  'text'   : msg,
   "attachments" : [
     {
       "type"  : "image",
