@@ -72,16 +72,41 @@ def qbWebhook():
  
   if data['text'].lower() == '!goodwentz':
     msg = '"'+random.choice(gwarr)+'"-Carson Wentz'
-    send_msg(msg)
+    send_msg_wentz(msg)
     
   if data['text'].lower() == '!badwentz':
     msg =""
-    send_message_picture(msg,bwarr)
+    send_message_picture_wentz(msg,bwarr)
   
   return "ok", 200
 
 
+def send_message_picture_wentz(msg, arr):
+  url  = 'https://api.groupme.com/v3/bots/post'
 
+  rand=random.choice(arr)
+  data ={
+  'bot_id' : os.getenv('WENTZ_ID'),
+          'text'   : msg,
+  "attachments" : [
+    {
+      "type"  : "image",
+      "url"   : rand
+    }
+  ],
+  'picture_url': rand
+}
+  request = Request(url, urlencode(data).encode())
+  json = urlopen(request).read().decode()
+  
+def send_msg_wentz(msg):
+  url  = 'https://api.groupme.com/v3/bots/post'
+  data ={
+  'bot_id' : os.getenv('WENTZ_ID),
+  'text'   : msg
+        }
+  request = Request(url, urlencode(data).encode())
+  json = urlopen(request).read().decode()
 
 
 
