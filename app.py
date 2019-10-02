@@ -39,7 +39,7 @@ def webhook():
 
     send_msg(msg)
 
-  elif "i'm" in data['text'].lower() and data['sender_type']!='bot':
+  elif ("i’m" in data['text'].lower() or "i'm" in data['text'].lower() )and data['sender_type']!='bot':
 
     amNum=data['text'].lower().find("i'm")
     am=data['text'][amNum+4:]
