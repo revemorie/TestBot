@@ -102,7 +102,7 @@ def send_message_picture_wentz(msg, arr):
 def send_msg_wentz(msg):
   url  = 'https://api.groupme.com/v3/bots/post'
   data ={
-  'bot_id' : os.getenv('WENTZ_ID),
+  'bot_id' : os.getenv('WENTZ_ID'),
   'text'   : msg
         }
   request = Request(url, urlencode(data).encode())
