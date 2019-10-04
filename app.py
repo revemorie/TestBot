@@ -76,10 +76,10 @@ def webhook():
 
     toPrint=list(zip(leaderboardNumber,leaderboardName))
     toPrint.sort(key=lambda x: x[0])
-    
+    toPrint.reverse()
     msg=""
     for i in range(len(leaderboardId)):
-      msg+=str(toPrint[i][1])+" Received "+str(toPrint[i][0])+" Likes this week\n\n"
+      msg+=str(toPrint[i][1])+" Received "+str(toPrint[i][0])+" likes this week\n\n"
 
     send_msg(msg)
     leaderboardNumber.clear()
