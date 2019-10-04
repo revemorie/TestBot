@@ -63,6 +63,7 @@ def webhook():
       leaderboardName.append(i['nickname'])
     leaderboardId.append('817464')
     leaderboardName.append('CheetoBot')
+    leaderboardNumber=[0]*len(leaderboardId)
       
     
       
