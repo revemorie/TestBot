@@ -79,7 +79,7 @@ def webhook():
     msg=""
     for i in range(len(leaderboardId)):
       if int(toPrint[i][0]) != 0:
-      msg+=str(toPrint[i][1])+" received "+str(toPrint[i][0])+" likes in the past 100 messages\n"
+        msg+=str(toPrint[i][1])+" received "+str(toPrint[i][0])+" likes in the past 100 messages\n"
 
     print(msg)
     send_msg(msg)
