@@ -78,7 +78,7 @@ def webhook():
     toPrint.reverse()
     msg=""
     for i in range(len(leaderboardId)):
-      msg+=str(toPrint[i][1])+" Received "+str(toPrint[i][0])+" likes in the past 100 messages\n\n"
+      msg+=str(toPrint[i][1])+" Received "+str(toPrint[i][0])+" likes in the past 100 messages\n"
 
     print(msg)
     send_msg(msg)
