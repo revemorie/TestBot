@@ -61,10 +61,10 @@ def webhook():
     leaderboardId.append('817464')
     leaderboardName.append('CheetoBot')
     leaderboardNumber=[0]*len(leaderboardId)
-      
+    msgId=json.loads(r.text)['response']['messages']['last_message_id']
     
       
-    l=requests.get("https://api.groupme.com/v3/groups/21164167/likes?period=week",headers={'Content-Type': 'application/json','X-Access-Token': os.getenv('AS_TOKEN')})
+    l=requests.get("https://api.groupme.com/v3/groups/21164167/messages",params={'before_id':msgId,'limit':'100'},headers={'Content-Type': 'application/json','X-Access-Token': os.getenv('AS_TOKEN')})
     print((json.loads(l.text)))
     messages=(json.loads(l.text))['response']['messages']
     for j in messages:
@@ -79,7 +79,7 @@ def webhook():
     toPrint.reverse()
     msg=""
     for i in range(len(leaderboardId)):
-      msg+=str(toPrint[i][1])+" Received "+str(toPrint[i][0])+" likes this week\n\n"
+      msg+=str(toPrint[i][1])+" Received "+str(toPrint[i][0])+" likes in the past 100 messages\n\n"
 
     send_msg(msg)
     leaderboardNumber.clear()
