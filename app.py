@@ -62,8 +62,8 @@ def webhook():
     print((json.loads(l.text)))
     messages=(json.loads(l.text))['response']['messages']
     for j in messages:
-      likes=messages["favorited_by"]
-      user=messages['user_id']
+      likes=j['favorited_by']
+      user=j['user_id']
       for k in likes:
         leaderboardNumber[leaderboardId.index(user)]+=1
 
