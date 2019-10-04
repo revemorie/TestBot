@@ -52,9 +52,6 @@ def webhook():
 
   elif data['text'].lower() == "!leaderboard":
 
-    leaderboardNumber.clear()
-    leaderboardName.clear()
-    leaderboardId.clear()
     r=requests.get("https://api.groupme.com/v3/groups/21164167",headers={'Content-Type': 'application/json','X-Access-Token': os.getenv('AS_TOKEN')})
     
     members=(json.loads(r.text))['response']['members']
