@@ -52,13 +52,13 @@ def webhook():
 
   elif data['text'].lower() == "!leaderboard":
     r=requests.get("https://api.groupme.com/v3/groups/21164167")
-    members=(json.loads(r))['members']
+    members=(json.loads(r.text))['members']
     for i in members:
       leaderboardId.append(i['user_id'])
       leaderboardName.append(i['nickname'])
       
     l=requests.get("https://api.groupme.com/v3/groups/21164167/likes?period=week")
-    messages=(json.loads(l))['messages']
+    messages=(json.loads(l.text))['messages']
     for j in messages:
       likes=messages["favorited_by"]
       user=messages['user_id']
