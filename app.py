@@ -185,8 +185,10 @@ def webhook():
     leaderboardId.clear()
     leaderboardMsgNum.clear()
     
-  elif ("i’m" in data['text'].lower() or "i'm" in data['text'].lower() ) and data['sender_type']!='bot' and (time.time())-countTime>3600:
+  elif ("i’m" in data['text'].lower() or "i'm" in data['text'].lower() ) and data['sender_type']!='bot' and ((time.time())-countTime)>3600:
     countTime=time.time()
+    print(countTime-time.time())
+    print(countTime)
     amNum=data['text'].lower().find("i'm")
     if amNum==-1:
       amNum=data['text'].lower().find("i’m")
