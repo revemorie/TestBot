@@ -172,7 +172,7 @@ def webhook():
     for i in range(10):
       if int(toPrint[i][0]) == 0:
         toPrint[i][1]=0
-        toprint[i][0]=1
+        toPrint[i][0]=1
       msg+=str(toPrint[i][1])+" received "+str(round(toPrint[i][0],2))+" likes per post for the past 10000 messages\n"
 
     print(msg)
