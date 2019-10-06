@@ -102,11 +102,10 @@ def webhook():
     leaderboardNumber=[0]*len(leaderboardId)
     msgId=json.loads(r.text)['response']['messages']['last_message_id']
     
-    for i in range(100):
+    for i in range(50):
       
       l=requests.get("https://api.groupme.com/v3/groups/21164167/messages",params={'before_id':msgId,'limit':'100'},headers={'Content-Type': 'application/json','X-Access-Token': os.getenv('AS_TOKEN')})
       messages=(json.loads(l.text))['response']['messages']
-      print(messages)
       for j in messages:
         msgId=j['id']
         if j['sender_type']=='user' or j['sender_type']=='bot':
@@ -124,7 +123,7 @@ def webhook():
     msg=""
     for i in range(10):
       if int(toPrint[i][0]) != 0:
-        msg+=str(toPrint[i][1])+" received "+str(toPrint[i][0])+" likes in the past 10000 messages\n"
+        msg+=str(toPrint[i][1])+" received "+str(toPrint[i][0])+" likes in the past 5000 messages\n"
 
     print(msg)
     send_msg(msg)
