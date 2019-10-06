@@ -111,9 +111,9 @@ def webhook():
         if j['sender_type']=='user' or j['sender_type']=='bot':
           likes=j['favorited_by']
           user=j['user_id']
-      
-          for k in likes:
-            leaderboardNumber[leaderboardId.index(user)]+=1
+          if user in leaderboardId:
+            for k in likes:
+              leaderboardNumber[leaderboardId.index(user)]+=1
 
       
 
