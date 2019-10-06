@@ -68,7 +68,7 @@ def webhook():
     messages=(json.loads(l.text))['response']['messages']
     print(messages)
     for j in messages:
-      if j['sender_type']!='system' or j['sender_type']!='calender':
+      if j['sender_type']!='system' or j['sender_id']!='calender':
         likes=j['favorited_by']
         user=j['user_id']
       
