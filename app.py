@@ -67,11 +67,12 @@ def webhook():
     l=requests.get("https://api.groupme.com/v3/groups/21164167/messages",params={'before_id':msgId,'limit':'100'},headers={'Content-Type': 'application/json','X-Access-Token': os.getenv('AS_TOKEN')})
     messages=(json.loads(l.text))['response']['messages']
     for j in messages:
-      likes=j['favorited_by']
-      user=j['user_id']
+      if j['sender_type']!='system':
+        likes=j['favorited_by']
+        user=j['user_id']
       
-      for k in likes:
-        leaderboardNumber[leaderboardId.index(user)]+=1
+        for k in likes:
+          leaderboardNumber[leaderboardId.index(user)]+=1
 
     toPrint=list(zip(leaderboardNumber,leaderboardName))
     toPrint.sort(key=lambda x: x[0])
