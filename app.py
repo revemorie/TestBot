@@ -162,7 +162,7 @@ def webhook():
     
 
     for i in range(len(leaderboardNumber)):
-      if leaderboardMsgNum[i]!=0
+      if leaderboardMsgNum[i]!=0:
         leaderboardNumber[i]=leaderboardNumber[i]/leaderboardMsgNum[i]
       
     toPrint=list(zip(leaderboardNumber,leaderboardName))
