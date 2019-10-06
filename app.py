@@ -13,6 +13,7 @@ msg_choices=["Meow","Purr","Growl","lööps bröther"]
 leaderboardNumber=[]
 leaderboardName=[]
 leaderboardId=[]
+leaderboardMsgNum=[]
 special_array=["https://i.groupme.com/1500x2250.jpeg.fbc08bc4eff14029a23c7e684d602f1a","https://i.groupme.com/457x399.jpeg.5089079d5a4c4b5abae69ba1d77d413c","https://i.groupme.com/1266x2250.jpeg.76f6311bf2ef4d3e9fd75bf2d6fc8f0c","https://i.groupme.com/1280x720.jpeg.38d93ff6f1304ba2b94c0aaf602f990b","https://i.groupme.com/1125x1500.jpeg.09c008a31f954c1db86159d9c62c0a39","https://i.groupme.com/873x654.jpeg.95c9ee5907aa4822b8200b4349dbe332","https://i.groupme.com/1920x1080.jpeg.bad8a2da943847b08ea013b674e520d4","https://i.groupme.com/1224x1632.jpeg.67b08560e7ff4f07ae62932124137560"]
 array=["https://i.groupme.com/992x744.jpeg.017b4709f9c64fe0bc95be7a32a4472d","https://i.groupme.com/1122x2208.jpeg.c432a6c9addc4d2fb5492c5782457611","https://i.groupme.com/1536x2048.jpeg.82d1b1bf281b43779ca5027cfa3c2288","https://i.groupme.com/4032x3024.jpeg.565584ed54cc46419d69f3f40315f5ee","https://i.groupme.com/1688x2250.jpeg.783a2dd5d50d47cc928d078f4c2541bb","https://i.groupme.com/3024x4032.jpeg.9e164408e4894f5b9405c3ababafb111","https://i.groupme.com/1688x2250.jpeg.de0ef3f47aa94149a7ce8ebf1e0cce39","https://i.groupme.com/4032x3024.jpeg.684ffe5536a44b69bfc88c4567e10515","https://i.groupme.com/1124x1500.jpeg.94eeffa8faec4036bd670e1a8837e42f","https://i.groupme.com/1798x1126.jpeg.5c5f21ace93e4e76add41a30f6457680","https://i.groupme.com/3024x4032.jpeg.fa24f79a44d74a6796b20a90432edba8","https://i.groupme.com/1688x2250.jpeg.cb2bf654cd614b19853bc01edb4e96b1","https://i.groupme.com/3024x4032.jpeg.d955cd324c2a473aa521d76be462e908","https://i.groupme.com/1124x1500.jpeg.338c4165e1da4698b5afddd28f8a90fb","https://i.groupme.com/563x1218.jpeg.7b7484ff24d64312ad8325f94650e544","https://i.groupme.com/1686x2250.jpeg.fcb140e1486d4bb88296cc0fe6ffc7e3"]
 bbbArray=["https://v.groupme.com/20753497/2019-09-30T18:17:02Z/39b4c006.348x240r.mp4"]
@@ -129,7 +130,54 @@ def webhook():
     send_msg(msg)
     leaderboardNumber.clear()
     leaderboardName.clear()
-    leaderboardId.clear()   
+    leaderboardId.clear()
+    
+  elif data['text'].lower() == "!alltimeleaderboardavg":
+
+    r=requests.get("https://api.groupme.com/v3/groups/21164167",headers={'Content-Type': 'application/json','X-Access-Token': os.getenv('AS_TOKEN')})
+    
+    members=(json.loads(r.text))['response']['members']
+    for i in members:
+      leaderboardId.append(i['user_id'])
+      leaderboardName.append(i['nickname'])
+    leaderboardId.append('817464')
+    leaderboardName.append('CheetoBot')
+    leaderboardNumber=[0]*len(leaderboardId)
+    leaderboardMsgNum=[0]*len(leaderboardId)
+    msgId=json.loads(r.text)['response']['messages']['last_message_id']
+    
+    for i in range(250):
+      
+      l=requests.get("https://api.groupme.com/v3/groups/21164167/messages",params={'before_id':msgId,'limit':'100'},headers={'Content-Type': 'application/json','X-Access-Token': os.getenv('AS_TOKEN')})
+      messages=(json.loads(l.text))['response']['messages']
+      for j in messages:
+        msgId=j['id']
+        if j['sender_type']=='user' or j['sender_type']=='bot':
+          likes=j['favorited_by']
+          user=j['user_id']
+          if user in leaderboardId:
+            leaderboardMsgNum[leaderboardId.index(user)]+=1
+            for k in likes:
+              leaderboardNumber[leaderboardId.index(user)]+=1
+    
+
+    for i in range(len(leaderboardNumber)):
+      leaderboardNumber[i]=leaderboadNumber[i]/leaderboardMsgNum[i]
+      
+    toPrint=list(zip(leaderboardNumber,leaderboardName))
+    toPrint.sort(key=lambda x: x[0])
+    toPrint.reverse()
+    msg=""
+    for i in range(10):
+      if int(toPrint[i][0]) != 0:
+        msg+=str(toPrint[i][1])+" received "+str(toPrint[i][0])+" likes per post for the past 25000 messages\n"
+
+    print(msg)
+    send_msg(msg)
+    leaderboardNumber.clear()
+    leaderboardName.clear()
+    leaderboardId.clear()
+    leaderboardMsgNum.clear()
     
   '''
   elif ("i’m" in data['text'].lower() or "i'm" in data['text'].lower() )and data['sender_type']!='bot':
