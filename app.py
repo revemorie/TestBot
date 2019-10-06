@@ -171,7 +171,7 @@ def webhook():
     #toPrint.reverse()
     msg=""
     for i in range(10):
-      if int(toPrint[i][0]) == 0:
+      if round(toPrint[i][0],2)== 0:
         msg+=str(toPrint[i][1])+" received 0 likes per post for the past 10000 messages\n"
       else:
         msg+=str(toPrint[i][1])+" received "+str(round(toPrint[i][0],2))+" likes per post for the past 10000 messages\n"
