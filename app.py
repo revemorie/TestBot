@@ -167,7 +167,7 @@ def webhook():
       
     toPrint=list(zip(leaderboardNumber,leaderboardName))
     toPrint.sort(key=lambda x: x[0])
-    toPrint.reverse()
+    #toPrint.reverse()
     msg=""
     for i in range(10):
       if int(toPrint[i][0]) != 0:
