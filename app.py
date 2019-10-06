@@ -122,9 +122,9 @@ def webhook():
     toPrint.sort(key=lambda x: x[0])
     toPrint.reverse()
     msg=""
-    for i in range(len(leaderboardId)):
+    for i in range(10):
       if int(toPrint[i][0]) != 0:
-        msg+=str(toPrint[i][1])+" received "+str(toPrint[i][0])+" likes in the past 100 messages\n"
+        msg+=str(toPrint[i][1])+" received "+str(toPrint[i][0])+" likes in the past 10000 messages\n"
 
     print(msg)
     send_msg(msg)
