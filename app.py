@@ -66,6 +66,7 @@ def webhook():
       
     l=requests.get("https://api.groupme.com/v3/groups/21164167/messages",params={'before_id':msgId,'limit':'100'},headers={'Content-Type': 'application/json','X-Access-Token': os.getenv('AS_TOKEN')})
     messages=(json.loads(l.text))['response']['messages']
+    print(messages)
     for j in messages:
       if j['sender_type']!='system':
         likes=j['favorited_by']
