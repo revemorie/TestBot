@@ -47,7 +47,7 @@ def webhook():
 
   elif data['text'].lower() == '!help':
     
-    msg ="!help- Shows this text\n!cheeto- Displays a random photo of cheeto\n!notcheeto- Displays a random photo of something that is not cheeto\n!live- Generates a live gif of whatever the PiCamera is pointing towards (hopefully cheeto)\n!bigbootybitches- I GOT BIG BOOTY BITCHES\n!leaderboard- THIS IS IN BETA"
+    msg ="!help- Shows this text\n!cheeto- Displays a random photo of cheeto\n!notcheeto- Displays a random photo of something that is not cheeto\n!live- Generates a live gif of whatever the PiCamera is pointing towards (hopefully cheeto)\n!bigbootybitches- I GOT BIG BOOTY BITCHES\n!leaderboard- shows top likes\n!alltimeleaderboard\n!alltimeleaderboardavg"
 
     send_msg(msg)
 
