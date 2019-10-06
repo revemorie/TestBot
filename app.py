@@ -88,7 +88,49 @@ def webhook():
     leaderboardNumber.clear()
     leaderboardName.clear()
     leaderboardId.clear()
+
+  elif data['text'].lower() == "!alltimeleaderboard":
+
+    r=requests.get("https://api.groupme.com/v3/groups/21164167",headers={'Content-Type': 'application/json','X-Access-Token': os.getenv('AS_TOKEN')})
     
+    members=(json.loads(r.text))['response']['members']
+    for i in members:
+      leaderboardId.append(i['user_id'])
+      leaderboardName.append(i['nickname'])
+    leaderboardId.append('817464')
+    leaderboardName.append('CheetoBot')
+    leaderboardNumber=[0]*len(leaderboardId)
+    msgId=json.loads(r.text)['response']['messages']['last_message_id']
+    
+    for i in range(10):
+      
+      l=requests.get("https://api.groupme.com/v3/groups/21164167/messages",params={'before_id':msgId,'limit':'100'},headers={'Content-Type': 'application/json','X-Access-Token': os.getenv('AS_TOKEN')})
+      messages=(json.loads(l.text))['response']['messages']
+      print(messages)
+      for j in messages:
+        msgId=j['id']
+        if j['sender_type']=='user' or j['sender_type']=='bot':
+          likes=j['favorited_by']
+          user=j['user_id']
+      
+          for k in likes:
+            leaderboardNumber[leaderboardId.index(user)]+=1
+
+      
+
+    toPrint=list(zip(leaderboardNumber,leaderboardName))
+    toPrint.sort(key=lambda x: x[0])
+    toPrint.reverse()
+    msg=""
+    for i in range(len(leaderboardId)):
+      if int(toPrint[i][0]) != 0:
+        msg+=str(toPrint[i][1])+" received "+str(toPrint[i][0])+" likes in the past 100 messages\n"
+
+    print(msg)
+    send_msg(msg)
+    leaderboardNumber.clear()
+    leaderboardName.clear()
+    leaderboardId.clear()   
     
   '''
   elif ("i’m" in data['text'].lower() or "i'm" in data['text'].lower() )and data['sender_type']!='bot':
