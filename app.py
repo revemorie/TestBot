@@ -184,7 +184,7 @@ def webhook():
     leaderboardName.clear()
     leaderboardId.clear()
     leaderboardMsgNum.clear()
-    
+ '''   
   elif ("i’m" in data['text'].lower() or "i'm" in data['text'].lower() ) and data['sender_type']!='bot' and ((time.time())-countTime)>3600:
     countTime=time.time()
     amNum=data['text'].lower().find("i'm")
@@ -194,7 +194,7 @@ def webhook():
     am=data['text'][amNum+4:]
     msg="Hi "+am+", I'm CheetoBot"
     send_msg(msg)
-
+'''
 
   return "ok", 200
 
