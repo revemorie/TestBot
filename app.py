@@ -4,33 +4,33 @@ import json
 import random
 import requests
 import time
-from urllib.parse import urlencode, unquote
-from urllib.request import Request, urlopen
 
 from flask import Flask, request
 
 app = Flask(__name__)
 
 @app.route('/', methods=['POST'])
-def webhook():
+def msg_received_from_group():
+
   data = request.get_json()
-  log('Recieved {}'.format(data))
-  # We don't want to reply to ourselves!
+  log('{}'.format(data))
   
   if data['text'].lower() == "!test":
-   send_msg("hey")
+   send_msg("Hello World!")
 
   return "ok", 200
 
   
 def send_msg(msg):
+
   url  = 'https://api.groupme.com/v3/bots/post'
+  
   data ={
-  'bot_id' : ,
+  'bot_id' : os.getenv('GROUPME_BOT_ID'),
   'text'   : msg
-        }
-  request = Request(url, urlencode(data).encode())
-  json = urlopen(request).read().decode()
+  }
+        
+  request = requests.post(url=url, data=data)
 
 
 def log(msg):
