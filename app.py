@@ -58,7 +58,7 @@ def send_msg_pic(msg, picURL):
       "url"   : picURL
     }
   ],
-  'picture_url': rand
+  'picture_url': picURL
   }
 
   request = requests.post(url=url, data=data)
