@@ -45,7 +45,7 @@ def send_msg(msg):
 
 #sends a picture and a message to the chat
 #Picture URL must be registered with GroupMe first
-def send_mesg_pic(msg, picURL):
+def send_msg_pic(msg, picURL):
 
   url  = 'https://api.groupme.com/v3/bots/post'
 
