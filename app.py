@@ -24,7 +24,7 @@ def msg_received_from_group():
 	
 
   elif data['text'].lower() == "!testpic":
-    send_msg_pic("Hello World!","https://i.groupme.com/1024x1024.jpeg.d733d6de5c36462f8d1cb67e3191b618")
+    send_msg_pic("Hello World!","https://www.ebony.com/wp-content/uploads/2016/07/barobama_caro_original_45230.jpg")
 	
 	
 
