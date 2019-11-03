@@ -24,7 +24,7 @@ def msg_received_from_group():
 	
 
   elif data['text'].lower() == "!testpic":
-    send_msg_pic("https://www.ebony.com/wp-content/uploads/2016/07/barobama_caro_original_45230.jpg")
+    send_msg_pic("", "https://www.ebony.com/wp-content/uploads/2016/07/barobama_caro_original_45230.jpg")
 	
 	
 
